@@ -27,7 +27,7 @@ if (config.proxyEnabled) {
       return req.originalUrl == '/v1/query' || req.originalUrl == '/v1/graphql';
     },
     proxyReqOptDecorator: function(proxyReqOpts, srcReq) {
-      proxyReqOpts.headers['x-hasura-admin-secret'] = 'keyboardcat';
+      proxyReqOpts.headers['x-hasura-admin-secret'] = config.proxySecret;
       return proxyReqOpts;
     }
   }))
