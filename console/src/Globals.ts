@@ -24,6 +24,7 @@ declare global {
       consolePath: string;
       cliUUID: string;
       consoleId: Nullable<string>;
+      breadMode: boolean;
     };
   }
   const CONSOLE_ASSET_VERSION: string;
@@ -56,6 +57,7 @@ const globals = {
   hasuraUUID: '',
   telemetryNotificationShown: false,
   isProduction,
+  breadMode: window.__env.breadMode,
 };
 if (globals.consoleMode === SERVER_CONSOLE_MODE) {
   if (isProduction) {

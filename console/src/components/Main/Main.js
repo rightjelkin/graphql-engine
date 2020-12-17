@@ -378,25 +378,25 @@ class Main extends React.Component {
                   '/api-explorer',
                   true
                 )}
-                {getSidebarItem(
+                {globals.breadMode ? '' : getSidebarItem(
                   'Data',
                   'fa-database',
                   tooltips.data,
                   getSchemaBaseRoute(currentSchema)
                 )}
-                {getSidebarItem(
+                {globals.breadMode ? '' : getSidebarItem(
                   'Actions',
                   'fa-cogs',
                   tooltips.actions,
                   '/actions/manage/actions'
                 )}
-                {getSidebarItem(
+                {globals.breadMode ? '' : getSidebarItem(
                   'Remote Schemas',
                   'fa-plug',
                   tooltips.remoteSchema,
                   '/remote-schemas/manage/schemas'
                 )}{' '}
-                {getSidebarItem(
+                {globals.breadMode ? '' :  getSidebarItem(
                   'Events',
                   'fa-cloud',
                   tooltips.events,
@@ -411,7 +411,16 @@ class Main extends React.Component {
               }`}
             >
               {getAdminSecretSection()}
-              <div
+              {globals.breadMode ? <div
+                className={`${styles.headerRightNavbarBtn} ${styles.proWrapper}`}
+              >
+                <span
+                  className={`${styles.proName}`}
+                >
+                  BREAD MODE
+                </span>
+                {isPopUpOpen && <ProPopup toggleOpen={this.toggleProPopup} />}
+              </div>:<div
                 className={`${styles.headerRightNavbarBtn} ${styles.proWrapper}`}
                 onClick={this.onProIconClick}
               >
@@ -423,19 +432,19 @@ class Main extends React.Component {
                   CLOUD
                 </span>
                 {isPopUpOpen && <ProPopup toggleOpen={this.toggleProPopup} />}
-              </div>
-              <Link to="/settings">
+              </div>}
+              {globals.breadMode ? '' : <Link to="/settings">
                 <div className={styles.headerRightNavbarBtn}>
                   {getMetadataStatusIcon()}
                   {getSettingsSelectedMarker()}
                 </div>
-              </Link>
+              </Link>}
               <Help isSelected={currentActiveBlock === 'support'} />
-              <NotificationSection
+              {globals.breadMode ? '' : <NotificationSection
                 isDropDownOpen={this.state.isDropdownOpen}
                 closeDropDown={this.closeDropDown}
                 toggleDropDown={this.toggleDropDown}
-              />
+              />}
               {!this.state.loveConsentState.isDismissed ? (
                 <div
                   id="dropdown_wrapper"

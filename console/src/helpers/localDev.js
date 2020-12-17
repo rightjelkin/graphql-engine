@@ -11,7 +11,8 @@ const serverEnvVars = `
   enableTelemetry: ${process.env.ENABLE_TELEMETRY},
   assetsPath: '${process.env.ASSETS_PATH}',
   assetsVersion: '${process.env.ASSETS_VERSION}',
-  cdnAssets: ${process.env.CDN_ASSETS}
+  cdnAssets: ${process.env.CDN_ASSETS},
+  breadMode: ${process.env.BREAD_MODE},
 `;
 
 const cliEnvVars = `
@@ -26,6 +27,7 @@ const cliEnvVars = `
   assetsVersion: '${process.env.ASSETS_VERSION}',
   serverVersion: '${process.env.SERVER_VERSION}',
   cdnAssets: ${process.env.CDN_ASSETS},
+  breadMode: ${process.env.BREAD_MODE},
 `;
 
 const envVars =

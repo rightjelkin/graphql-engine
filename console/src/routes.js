@@ -125,31 +125,33 @@ const routes = store => {
             path="voyager-view"
             component={generatedVoyagerConnector(connect)}
           />
-          <Route path="settings" component={settingsContainer(connect)}>
-            <IndexRedirect to="metadata-actions" />
-            <Route
-              path="metadata-actions"
-              component={metadataOptionsConnector(connect)}
-            />
-            <Route
-              path="metadata-status"
-              component={metadataStatusConnector(connect)}
-            />
-            <Route
-              path="allow-list"
-              component={allowedQueriesConnector(connect)}
-            />
-            <Route path="logout" component={logoutConnector(connect)} />
-            <Route path="about" component={aboutConnector(connect)} />
-          </Route>
-          {dataRouter}
-          {remoteSchemaRouter}
-          {actionsRouter}
-          {eventsRouter}
-          {uiKitRouter}
-          <Route path="support" component={SupportContainer}>
-            <Route path="forums" component={HelpPage} />
-          </Route>
+            {globals.breadMode ? '' : 
+            <Route path="settings" component={settingsContainer(connect)}>
+              <IndexRedirect to="metadata-actions" />
+              <Route
+                path="metadata-actions"
+                component={metadataOptionsConnector(connect)}
+              />
+              <Route
+                path="metadata-status"
+                component={metadataStatusConnector(connect)}
+              />
+              <Route
+                path="allow-list"
+                component={allowedQueriesConnector(connect)}
+              />
+              <Route path="logout" component={logoutConnector(connect)} />
+              <Route path="about" component={aboutConnector(connect)} />
+            </Route>
+            } 
+            {globals.breadMode ? '' : dataRouter}
+            {globals.breadMode ? '' : remoteSchemaRouter}
+            {globals.breadMode ? '' : actionsRouter}
+            {globals.breadMode ? '' : eventsRouter}
+            {globals.breadMode ? '' : uiKitRouter}
+            <Route path="support" component={SupportContainer}>
+              <Route path="forums" component={HelpPage} />
+            </Route>
         </Route>
       </Route>
       <Route path="404" component={PageNotFound} status="404" />
