@@ -17,6 +17,7 @@
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
     "start-prod": "cross-env NODE_PATH=./src PORT=8080 NODE_ENV=production node ./bin/server.js",
     "build": "webpack --progress -p --colors --display-error-details --config webpack/prod.config.js",
+    "build-dev": "webpack --progress -p --colors --display-error-details --config webpack/dev.config.js",
     "server-build": "make server-build",
     "build-unused": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js --json | webpack-unused -s src",
     "cypress": "cypress open",
