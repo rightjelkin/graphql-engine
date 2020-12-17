@@ -1,7 +1,7 @@
 import { CLI_CONSOLE_MODE } from '../constants';
 
 const serverEnvVars = `
-  dataApiUrl: '${process.env.DATA_API_URL}',
+  dataApiUrl: '${process.env.PROXY_ENABLED === 'true' ? process.env.PROXY_API_URL : process.env.DATA_API_URL}',
   isAdminSecretSet: '${process.env.IS_ADMIN_SECRET_SET}',
   consoleMode: '${process.env.CONSOLE_MODE}',
   nodeEnv: '${process.env.NODE_ENV}',
@@ -17,7 +17,7 @@ const serverEnvVars = `
 const cliEnvVars = `
   apiPort: '${process.env.API_PORT}',
   apiHost: '${process.env.API_HOST}',
-  dataApiUrl: '${process.env.DATA_API_URL}',
+  dataApiUrl: '${process.env.PROXY_ENABLED === 'true' ? process.env.PROXY_API_URL : process.env.DATA_API_URL}',
   adminSecret: '${process.env.ADMIN_SECRET}',
   consoleMode: '${process.env.CONSOLE_MODE}',
   nodeEnv: '${process.env.NODE_ENV}',
