@@ -24,7 +24,7 @@ const proxyServer = new http.Server(proxyApp);
 if (config.proxyEnabled) {
   proxyApp.use('/', proxy(config.dataUrl, {
     filter: function(req, res) {
-      return req.originalUrl == '/v1/query' || req.originalUrl == '/v1/graphql';
+      return req.originalUrl == '/v1/query' || req.originalUrl == '/v1/graphql' || req.originalUrl == '/v1beta1/relay';
     },
     proxyReqOptDecorator: function(proxyReqOpts, srcReq) {
       proxyReqOpts.headers['x-hasura-admin-secret'] = config.proxySecret;
